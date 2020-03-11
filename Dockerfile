@@ -2,7 +2,7 @@ FROM balenalib/rpi-raspbian:latest
 ENTRYPOINT []
 
 RUN apt-get update && \
-    apt-get -qy install curl \
+    apt-get install curl \
                 build-essential python python-pip \
                 python-dev python-pip gcc make \
                 ca-certificates
