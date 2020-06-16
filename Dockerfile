@@ -4,7 +4,6 @@ COPY . /app
 WORKDIR /app
 
 RUN pip install -r requirements.txt
-
-#ENTRYPOINT [ "python3" ]
-
-CMD [ "src/app.py" ]
+RUN ["chmod", "+x", "dockerEntrypoint.sh"]
+EXPOSE 5000
+CMD [ "sh", "dockerEntrypoint.sh" ]
