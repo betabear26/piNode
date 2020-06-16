@@ -1,12 +1,10 @@
-FROM balenalib/rpi-raspbian:latest
-ENTRYPOINT []
+FROM python:3
 
-RUN apt-get update && \
-    apt-get install curl \
-                build-essential python python-pip \
-                python-dev python-pip gcc make \
-                ca-certificates
+COPY . /app
+WORKDIR /app
 
-RUN pip install rpi.gpio
+RUN pip install -r requirements.txt
 
-#CMD ["curl", "https://docker.com"]
+ENTRYPOINT [ "python3" ]
+
+CMD [ "src/app.py" ]
