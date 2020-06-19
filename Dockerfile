@@ -1,6 +1,6 @@
 FROM python:3.7-slim-stretch
 
-RUN apt-get update -y
+RUN apt-get update -y && apt-get install -y apt-transport-https
 RUN apt-get install -y python3 python-pip-whl pthon3-pip
 
 COPY . /app
