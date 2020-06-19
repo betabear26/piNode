@@ -1,12 +1,11 @@
-FROM arm32v7/python:3.7-slim-buster
+FROM python:3.7-slim-stretch
 
-RUN apt-get update \
-&& apt-get install build-essential -y
+RUN apt-get update -y
+RUN apt-get install -y python3 python-pip-whl pthon3-pip
 
 COPY . /app
 WORKDIR /app
 
 RUN pip3 install -r requirements.txt
-RUN ["chmod", "+x", "dockerEntrypoint.sh"]
-EXPOSE 5000
+#RUN ["chmod", "+x", "dockerEntrypoint.sh"]
 CMD [ "python3", "src/app.py" ]
