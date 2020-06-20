@@ -1,11 +1,15 @@
-FROM python:3.7-slim-stretch
+FROM arm32v7/ubuntu:19.10
 
-RUN apt-get update -y
-#RUN apt-get install -y python3 python-pip-whl pthon3-pip
+LABEL maintainer="sandeepjmp@gmail.com"
 
 COPY . /app
 WORKDIR /app
 
+RUN apt-get update -y
+RUN apt-get install -y python3 pthon3-pip python3-setuptools
+
 RUN pip3 install -r requirements.txt
-#RUN ["chmod", "+x", "dockerEntrypoint.sh"]
+
+EXPOSE 5000
+
 CMD [ "python3", "src/app.py" ]
